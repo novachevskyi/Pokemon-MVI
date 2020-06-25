@@ -18,10 +18,9 @@ class ListViewModel(
     private val loadPokemonListUseCase: GetPokemonListUseCase
 ) : BaseViewModel<Action, State>() {
 
-    val itemClick: PublishSubject<PokemonListItem> = PublishSubject.create()
+    var itemClick: PublishSubject<PokemonListItem> = PublishSubject.create()
 
-    val itemBinding = ItemBinding.of<PokemonListItem>(BR.item, R.layout.list_item)
-        .bindExtra(BR.itemClick, itemClick)
+    var itemBinding = ItemBinding.of<PokemonListItem>(BR.item, R.layout.list_item)
 
     val viewState: State
         get() = state.value ?: initialState

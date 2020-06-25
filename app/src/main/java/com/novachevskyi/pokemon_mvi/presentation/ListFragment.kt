@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.novachevskyi.pokemon_mvi.BR
 import com.novachevskyi.pokemon_mvi.R
 import com.novachevskyi.pokemon_mvi.databinding.FragmentListBinding
 import com.novachevskyi.pokemon_mvi.presentation.details.DetailActivity
@@ -27,6 +28,7 @@ class ListFragment : Fragment() {
             container,
             false
         )
+        viewModel.itemBinding.bindExtra(BR.itemClick, viewModel.itemClick)
         binding.viewModel = viewModel
         return binding.root
     }
