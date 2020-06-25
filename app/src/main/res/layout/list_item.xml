@@ -1,0 +1,36 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:onClick="@{() -> itemClick.onNext(item)}"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+        <!--app:imageUrl="@{item.avatar_url}"/-->
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="@{item.name}" />
+
+    </LinearLayout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.novachevskyi.pokemon_mvi.data.models.PokemonListItem" />
+
+        <variable
+            name="itemClick"
+            type="io.reactivex.subjects.PublishSubject" />
+
+    </data>
+</layout>
