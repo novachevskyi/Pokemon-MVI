@@ -9,7 +9,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.novachevskyi.pokemon_mvi.R
 import com.novachevskyi.pokemon_mvi.databinding.FragmentListBinding
-import com.novachevskyi.pokemon_mvi.presentation.DetailActivity.Companion.ITEM_PARAM_NAME
+import com.novachevskyi.pokemon_mvi.presentation.details.DetailActivity
+import com.novachevskyi.pokemon_mvi.presentation.details.DetailActivity.Companion.ITEM_PARAM_NAME
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ListFragment : Fragment() {

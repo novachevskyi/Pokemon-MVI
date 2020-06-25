@@ -34,16 +34,16 @@ class ListViewModel(
         when (change) {
             is Change.Loading -> state.apply {
                 isIdle = false
-                isLoading = true
-                isError = false
+                isLoading.set(true)
+                isError.set(false)
             }
             is Change.PokemonList -> state.apply {
-                isLoading = false
+                isLoading.set(false)
                 items.addAll(change.items)
             }
             is Change.Error -> state.apply {
-                isLoading = false
-                isError = true
+                isLoading.set(false)
+                isError.set(true)
             }
         }
     }

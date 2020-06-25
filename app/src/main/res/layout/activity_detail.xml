@@ -1,33 +1,90 @@
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:orientation="vertical"
-        android:padding="8dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@{item.name}" />
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        <TextView
-            android:id="@+id/weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:text="@{String.valueOf(item.detail.weight)}" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{String.format(@string/name, item.name)}" />
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_margin="8dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{item.detail.sprites.front_default}" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitCenter"
+                    app:imageUrl="@{item.detail.sprites.back_default}" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/stats" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:nestedScrollingEnabled="false"
+                app:items="@{item.stats}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@string/types" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:nestedScrollingEnabled="false"
+                app:items="@{item.types}"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <data>
 
         <variable
             name="item"
             type="com.novachevskyi.pokemon_mvi.data.models.PokemonListItem" />
+
+        <variable
+            name="viewModel"
+            type="com.novachevskyi.pokemon_mvi.presentation.details.DetailViewModel" />
 
     </data>
 </layout>
